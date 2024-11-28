@@ -89,16 +89,25 @@ foreach ($campaigns as $campaign) {
             break;
         }
     }
-    if (!$matchedDimension) continue;
+    if (!$matchedDimension){
+        continue;
+    } 
 
     $campaignOSList = array_map('strtolower', explode(',', $campaign['hs_os']));
-    if (!in_array($deviceOS, $campaignOSList)) continue;
+    if (!in_array($deviceOS, $campaignOSList)){
+        continue;
+    } 
 
   
-    if (strtolower($campaign['country']) !== $deviceCountry) continue;
+    if (strtolower($campaign['country']) !== $deviceCountry) {
+
+        continue;
+    }
 
   
-    if ($campaign['price'] < $requestedFloor) continue;
+    if ($campaign['price'] < $requestedFloor){
+        continue;
+    } 
 
   
     if (!$selectedCampaign || $campaign['price'] > $selectedCampaign['price']) {
